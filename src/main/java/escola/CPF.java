@@ -1,6 +1,5 @@
 package escola;
 
-import java.util.regex.Pattern;
 
 public class CPF {
     private String numero;
