@@ -3,6 +3,7 @@ package br.com.alura.escola.dominio.aluno;
 import java.util.ArrayList;
 import java.util.List;
 
+//AGGREATE ROOT
 public class Aluno {
 
     //Entidade alunos é unico
@@ -12,18 +13,21 @@ public class Aluno {
     private String senha;
     private List<Telefone> telefones = new ArrayList<>();
 
-    public void adicionarTelefone(String ddd, String numero){
-        this.telefones.add(new Telefone(ddd, numero));
-    }
-
     public Aluno(CPF cpf, String nome, Email email) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
     }
 
-    public String getCpf() {
-        return cpf.getNumero();
+    public void adicionarTelefone(String ddd, String numero){
+        if(telefones.size() == 2){
+            throw new IllegalArgumentException("Número máximo de telefones já atingido!");
+        }
+        this.telefones.add(new Telefone(ddd, numero));
+    }
+
+    public CPF getCpf() {
+        return cpf;
     }
 
     public String getNome() {
